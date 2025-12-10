@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Contact Person API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /contacts:
+    get:
+      summary: Get all contacts
+      responses:
+        "200":
+          description: List of contacts
+    post:
+      summary: Create a new contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+        required: true
+      responses:
+        "201":
+          description: Contact created
+  /contacts/{id}:
+    get:
+      summary: Get a contact by ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Contact detail
+    delete:
+      summary: Delete contact by ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Deleted
+components:
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        message:
+          type: string
