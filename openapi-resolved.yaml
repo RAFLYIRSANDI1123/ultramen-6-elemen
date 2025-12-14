@@ -3,14 +3,11 @@ info:
   title: Contact Person API
   version: 1.0.0
 servers:
-- url: /
+- url: https://sukacarimasalah
+  description: production server
+
 paths:
   /contacts:
-    get:
-      summary: Get all contacts
-      responses:
-        "200":
-          description: List of contacts
     post:
       summary: Create a new contact
       requestBody:
@@ -22,29 +19,8 @@ paths:
       responses:
         "201":
           description: Contact created
-  /contacts/{id}:
-    get:
-      summary: Get a contact by ID
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-      responses:
-        "200":
-          description: Contact detail
-    delete:
-      summary: Delete contact by ID
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-      responses:
-        "200":
-          description: Deleted
+
+
 components:
   schemas:
     Contact:
